@@ -7,6 +7,8 @@ const winCount = document.getElementById('wins');
 const lossCount = document.getElementById('losses');
 const totalGames = document.getElementById('total-games');
 
+
+
 //radio buttons with the users throw choice 
 
  
