@@ -1,4 +1,4 @@
-function checkResult(player, computer) {
+export function checkResult(player, computer) {
     if (player === 'paper' && computer === 'rock') {
         return 'You won!';
     } else if (player === 'rock' && computer === 'scissors') {
@@ -15,5 +15,3 @@ function checkResult(player, computer) {
         return 'It was a draw!';
     }
 }
-
-export default checkResult; 
