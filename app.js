@@ -12,48 +12,33 @@ const drawsCount = document.getElementById('draws');
 let totalWins = 0;
 let totalLoss = 0;
 let totalDraws = 0;
+let totalGames = 0;
 
-//radio buttons with the users throw choice
-
-
-
- 
-//button the use click for playing
-
-//elements needed to display throw (win, lose, draw)
-
-
-//current wins losses and draws count
-
-
-//app state
-// wins
-//losses
-// draw
-
-//event listeners
 playButton.addEventListener('click', () => {
     const userRadioButton = document.querySelector('input:checked');
+    const userSelection = userRadioButton.value;
 
     const computerSelection = getRandomThrow();
-    const getResult = checkResult(userRadioButton, computerSelection);
+    const getResult = checkResult(userSelection, computerSelection);
 
     if (getResult === 'You won!') {
         totalWins++;
     }
     
-    if (getResult === 'You lost!') {
+    if (getResult === 'You lost :(') {
         totalLoss++;
     }
 
     if (getResult === 'It was a draw!') {
         totalDraws++;
     }
+    totalGames++;
 
     computerSelectionSpan.textContent = 'I drew ' + computerSelection + '. ' + getResult;
     winCount.textContent = totalWins;
     lossCount.textContent = totalLoss;
     drawsCount.textContent = totalDraws;
+    gamesCount.textContent = totalGames;
 
 });
 
