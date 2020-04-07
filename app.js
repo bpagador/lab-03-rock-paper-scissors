@@ -7,53 +7,53 @@ const winCount = document.getElementById('wins');
 const lossCount = document.getElementById('losses');
 const gamesCount = document.getElementById('games');
 const drawsCount = document.getElementById('draws');
-//const winLoseSpan = document.getElementById('win-lose');
+const resetButton = document.getElementById('reset-button');
+
 
 let totalWins = 0;
 let totalLoss = 0;
 let totalDraws = 0;
+let totalGames = 0;
 
-//radio buttons with the users throw choice
+const resetCount = () => {
+    totalWins = 0;
+    totalLoss = 0;
+    totalDraws = 0;
+    totalGames = 0;
+    computerSelectionSpan.textContent = '';
+    updateSpans();
+};
 
+const updateSpans = () => {
+    winCount.textContent = totalWins;
+    lossCount.textContent = totalLoss;
+    drawsCount.textContent = totalDraws;
+    gamesCount.textContent = totalGames;
+};
 
-
- 
-//button the use click for playing
-
-//elements needed to display throw (win, lose, draw)
-
-
-//current wins losses and draws count
-
-
-//app state
-// wins
-//losses
-// draw
-
-//event listeners
 playButton.addEventListener('click', () => {
     const userRadioButton = document.querySelector('input:checked');
+    const userSelection = userRadioButton.value;
 
     const computerSelection = getRandomThrow();
-    const getResult = checkResult(userRadioButton, computerSelection);
+    const getResult = checkResult(userSelection, computerSelection);
 
     if (getResult === 'You won!') {
         totalWins++;
     }
     
-    if (getResult === 'You lost!') {
+    if (getResult === 'You lost :(') {
         totalLoss++;
     }
 
     if (getResult === 'It was a draw!') {
         totalDraws++;
     }
+    totalGames++;
 
     computerSelectionSpan.textContent = 'I drew ' + computerSelection + '. ' + getResult;
-    winCount.textContent = totalWins;
-    lossCount.textContent = totalLoss;
-    drawsCount.textContent = totalDraws;
 
+    updateSpans();
 });
 
+resetButton.addEventListener('click', resetCount);
